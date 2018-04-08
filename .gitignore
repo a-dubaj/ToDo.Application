@@ -71,6 +71,5 @@ fabric.properties
 .idea/misc.xml
 .idea/modules.xml
 .idea/vcs.xml
-README.md
 ToDoApplication.iml
-src/
+

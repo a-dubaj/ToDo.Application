@@ -19,4 +19,6 @@ public class DatabaseHandler extends Configs{
         dbConnection = DriverManager.getConnection(connectionString, dbUser, dbPass);
         return dbConnection;
     }
+
+
 }

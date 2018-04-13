@@ -70,10 +70,7 @@ public class SignupController {
 
         User user = new User(name, lastName, userName, password, location, gender);
 
-        databaseHandler.signUpUser(signUpFirstName.getText(), signUpLastName.getText(),
-                signUpUsername.getText(),
-                signUpPassword.getText(),
-                signUpLocation.getText(), gender);
+        databaseHandler.signUpUser(user);
     }
 
 

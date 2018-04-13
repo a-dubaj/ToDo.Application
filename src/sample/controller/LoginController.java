@@ -15,61 +15,61 @@ import java.util.ResourceBundle;
 
 public class LoginController {
 
-        @FXML
-        private ResourceBundle resources;
+    @FXML
+    private ResourceBundle resources;
 
-        @FXML
-        private URL location;
+    @FXML
+    private URL location;
 
-        @FXML
-        private JFXTextField loginUsername;
+    @FXML
+    private JFXTextField loginUsername;
 
-        @FXML
-        private JFXPasswordField loginPassword;
+    @FXML
+    private JFXPasswordField loginPassword;
 
-        @FXML
-        private JFXButton loginButton;
+    @FXML
+    private JFXButton loginButton;
 
-        @FXML
-        private JFXButton loginSignUpButton;
+    @FXML
+    private JFXButton loginSignUpButton;
 
-        @FXML
-        void initialize() {
+    @FXML
+    void initialize() {
 
-                String loginText = loginUsername.getText().trim();
-                String loginPwd = loginPassword.getText().trim();
+        String loginText = loginUsername.getText().trim();
+        String loginPwd = loginPassword.getText().trim();
 
-                loginSignUpButton.setOnAction(event -> {
-                    loginSignUpButton.getScene().getWindow().hide();
-                        FXMLLoader loader = new FXMLLoader();
-                        loader.setLocation(getClass().getResource("/sample/view/signup.fxml"));
+        loginSignUpButton.setOnAction(event -> {
+            loginSignUpButton.getScene().getWindow().hide();
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/sample/view/signup.fxml"));
 
-                        try {
-                                loader.load();
-                        } catch (IOException e) {
-                                e.printStackTrace();
-                        }
+            try {
+                loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
 
-                        Parent root = loader.getRoot();
-                        Stage stage = new Stage();
-                        stage.setScene(new Scene(root));
-                        stage.showAndWait();
-                });
+            Parent root = loader.getRoot();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.showAndWait();
+        });
 
-                loginButton.setOnAction(event -> {
-                        if(!loginText.equals("") || !loginPwd.equals("")) {
-                                loginUser(loginText, loginPwd);
-                        } else {
-                               System.out.println("Error login user");
-                        }
-                });
+        loginButton.setOnAction(event -> {
+            if (!loginText.equals("") || !loginPwd.equals("")) {
+                loginUser(loginText, loginPwd);
+            } else {
+                System.out.println("Error login user");
+            }
+        });
 
-        }
+    }
 
-        private void loginUser(String userName, String password) {
-                //Check in the database if the user  exists
+    private void loginUser(String userName, String password) {
+        //Check in the database if the user  exists
 
-        }
+    }
 
 }
 

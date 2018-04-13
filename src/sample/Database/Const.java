@@ -4,7 +4,7 @@ package sample.Database;
  * Created by andrzejdubaj on 12.04.2018.
  */
 public class Const {
-    public static final String USER_TABLE = "users";
+    public static final String USER_TABLE = "usersid";
     public static final String TASKS_TABLE = "tasks";
 
     //USERS Table Column Names

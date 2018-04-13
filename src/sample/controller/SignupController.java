@@ -24,22 +24,22 @@ public class SignupController {
     private JFXTextField signUpFirstName;
 
     @FXML
+    private JFXTextField signUpUsername;
+
+    @FXML
     private JFXTextField signUpLastName;
 
     @FXML
-    private JFXTextField sihnUpUserName;
+    private JFXTextField signUpLocation;
+
+    @FXML
+    private JFXPasswordField signUpPassword;
 
     @FXML
     private JFXCheckBox signUpCheckBoxMale;
 
     @FXML
     private JFXCheckBox signUpCheckBoxFemale;
-
-    @FXML
-    private JFXPasswordField signUpPassword;
-
-    @FXML
-    private JFXButton signUpLcation;
 
     @FXML
     private JFXButton signUpButton;
@@ -49,7 +49,10 @@ public class SignupController {
         DatabaseHandler databaseHandler = new DatabaseHandler();
         signUpButton.setOnAction(event -> {
             databaseHandler.signUpUser(signUpFirstName.getText(), signUpLastName.getText(),
-                    sihnUpUserName.getText(), signUpPassword.getText(), signUpLcation.getText(), "Female");
+                    signUpUsername.getText(),
+                    signUpPassword.getText(),
+                    //userLocation.getText(), "Female");
+                    signUpLocation.getText(), "Female");
         });
 
     }

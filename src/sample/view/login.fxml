@@ -30,7 +30,7 @@
             <Font size="36.0" />
          </font>
       </Label>
-      <JFXButton fx:id="loginSignupButton" layoutX="579.0" layoutY="23.0" prefHeight="27.0" prefWidth="97.0" style="-fx-background-color: #9a0007;" text="Sign Up" textFill="#f8f7f7">
+      <JFXButton fx:id="loginSignUpButton" layoutX="579.0" layoutY="23.0" prefHeight="27.0" prefWidth="97.0" style="-fx-background-color: #9a0007;" text="Sign Up" textFill="#f8f7f7">
          <font>
             <Font size="14.0" />
          </font>

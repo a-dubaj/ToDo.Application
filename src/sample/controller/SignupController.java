@@ -5,6 +5,7 @@ import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import javafx.fxml.FXML;
+import sample.Database.DatabaseHandler;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -38,10 +39,18 @@ public class SignupController {
     private JFXPasswordField signUpPassword;
 
     @FXML
+    private JFXButton signUpLcation;
+
+    @FXML
     private JFXButton signUpButton;
 
     @FXML
     void initialize() {
+        DatabaseHandler databaseHandler = new DatabaseHandler();
+        signUpButton.setOnAction(event -> {
+            databaseHandler.signUpUser(signUpFirstName.getText(), signUpLastName.getText(),
+                    sihnUpUserName.getText(), signUpPassword.getText(), signUpLcation.getText(), "Female");
+        });
 
     }
 

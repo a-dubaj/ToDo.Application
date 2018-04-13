@@ -31,7 +31,7 @@ public class LoginController {
         private JFXButton loginButton;
 
         @FXML
-        private JFXButton loginSignupButton;
+        private JFXButton loginSignUpButton;
 
         @FXML
         void initialize() {
@@ -39,8 +39,8 @@ public class LoginController {
                 String loginText = loginUsername.getText().trim();
                 String loginPwd = loginPassword.getText().trim();
 
-                loginSignupButton.setOnAction(event -> {
-                   loginSignupButton.getScene().getWindow().hide();
+                loginSignUpButton.setOnAction(event -> {
+                    loginSignUpButton.getScene().getWindow().hide();
                         FXMLLoader loader = new FXMLLoader();
                         loader.setLocation(getClass().getResource("/sample/view/signup.fxml"));
 
@@ -70,6 +70,7 @@ public class LoginController {
                 //Check in the database if the user  exists
 
         }
+
 }
 
 

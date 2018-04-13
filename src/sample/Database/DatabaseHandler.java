@@ -2,6 +2,7 @@ package sample.Database;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 /**
@@ -20,5 +21,20 @@ public class DatabaseHandler extends Configs{
         return dbConnection;
     }
 
+    public void signUpUser(String firstName, String lastName, String userName, String password, String location, String gender) {
+        String insert = "INSERT INTO " +Const.USER_TABLE +"("+Const.USERS_FIRSTNAME
+            +","+Const.USERS_LASTNAME+ ","+Const.USERS_USERNAME+","
+            +Const.USERS_PASSWORD+","+Const.USERS_LOCATION+","
+            +Const.USERS_GENDER+")" + "VALUES(?,?,?,?,?,?)";
+
+        try {
+            PreparedStatement preparedStatement = getDbConnection().prepareStatement(insert);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+    }
 
 }

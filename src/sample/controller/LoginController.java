@@ -8,9 +8,13 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import sample.Database.DatabaseHandler;
+import sample.model.User;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class LoginController {
@@ -33,11 +37,37 @@ public class LoginController {
     @FXML
     private JFXButton loginSignUpButton;
 
+    private DatabaseHandler databaseHandler;
+
     @FXML
     void initialize() {
 
-        String loginText = loginUsername.getText().trim();
-        String loginPwd = loginPassword.getText().trim();
+        databaseHandler = new DatabaseHandler();
+
+        loginButton.setOnAction(event -> {
+            String loginText = loginUsername.getText().trim();
+            String loginPwd = loginPassword.getText().trim();
+
+            User user = new User();
+            user.setUserName(loginText);
+            user.setPassword(loginPwd);
+
+
+            ResultSet userRow = databaseHandler.getUser(user);
+            int counter = 0;
+
+            try {
+                while (userRow.next()) {
+                    counter++;
+                }
+                if (counter == 1) {
+                    System.out.println("Login Successful!");
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
+        });
 
         loginSignUpButton.setOnAction(event -> {
             loginSignUpButton.getScene().getWindow().hide();
@@ -55,20 +85,6 @@ public class LoginController {
             stage.setScene(new Scene(root));
             stage.showAndWait();
         });
-
-        loginButton.setOnAction(event -> {
-            if (!loginText.equals("") || !loginPwd.equals("")) {
-                loginUser(loginText, loginPwd);
-            } else {
-                System.out.println("Error login user");
-            }
-        });
-
-    }
-
-    private void loginUser(String userName, String password) {
-        //Check in the database if the user  exists
-
     }
 
 }

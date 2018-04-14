@@ -2,10 +2,7 @@ package sample.Database;
 
 import sample.model.User;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 
 /**
  * Created by andrzejdubaj on 12.04.2018.
@@ -48,4 +45,31 @@ public class DatabaseHandler extends Configs {
 
     }
 
+    public ResultSet getUser(User user) {
+        ResultSet resultSet = null;
+
+        if (!user.getUserName().equals("") || !user.getPassword().equals("")) {
+            String query = "SELECT * FROM " + Const.USER_TABLE + " WHERE "
+                    + Const.USERS_USERNAME + "=?" + " AND " + Const.USERS_PASSWORD
+                    + "=?";
+            // select all from users table where username="paulo" and password="password"
+
+            try {
+                PreparedStatement preparedStatement = getDbConnection().prepareStatement(query);
+                preparedStatement.setString(1, user.getUserName());
+                preparedStatement.setString(2, user.getPassword());
+                resultSet = preparedStatement.executeQuery();
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+
+
+        } else {
+            System.out.println("Please enter your credentials");
+        }
+        return resultSet;
+    }
 }

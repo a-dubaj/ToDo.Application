@@ -2,12 +2,15 @@ package sample.controller;
 
 import javafx.animation.FadeTransition;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
 import sample.animations.Shaker;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -20,6 +23,9 @@ public class AddItemController {
 
     @FXML
     private URL location;
+
+    @FXML
+    private AnchorPane rootAnchorPane;
 
     @FXML
     private ImageView addButton;
@@ -55,6 +61,22 @@ public class AddItemController {
             labelTransition.setCycleCount(1);
             labelTransition.setAutoReverse(false);
             labelTransition.play();
+
+            try {
+                AnchorPane formPane = FXMLLoader.load(getClass().getResource("/sample/view/addItemForm.fxml"));
+                FadeTransition rootTransition = new FadeTransition(Duration.millis(2000), formPane);
+                rootTransition.setFromValue(0f);
+                rootTransition.setToValue(1f);
+                rootTransition.setCycleCount(1);
+                rootTransition.setAutoReverse(false);
+                rootTransition.play();
+
+                rootAnchorPane.getChildren().setAll(formPane);
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
         });
 
     }

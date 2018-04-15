@@ -59,9 +59,11 @@ public class LoginController {
             try {
                 while (userRow.next()) {
                     counter++;
+                    String name = userRow.getString("firstname");
+                    System.out.println("Login Successful! " + name);
                 }
                 if (counter == 1) {
-                    System.out.println("Login Successful!");
+                    System.out.println("Login Successful! ");
                 }
             } catch (SQLException e) {
                 e.printStackTrace();

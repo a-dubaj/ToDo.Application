@@ -9,6 +9,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import sample.Database.DatabaseHandler;
+import sample.animations.Shaker;
 import sample.model.User;
 
 import java.io.IOException;
@@ -54,6 +55,7 @@ public class LoginController {
 
 
             ResultSet userRow = databaseHandler.getUser(user);
+
             int counter = 0;
 
             try {
@@ -64,6 +66,11 @@ public class LoginController {
                 }
                 if (counter == 1) {
                     System.out.println("Login Successful! ");
+                } else {
+                    Shaker userNameShaker = new Shaker(loginUsername);
+                    Shaker passwordShaker = new Shaker(loginPassword);
+                    passwordShaker.shake();
+                    userNameShaker.shake();
                 }
             } catch (SQLException e) {
                 e.printStackTrace();

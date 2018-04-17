@@ -1,12 +1,12 @@
 # ToDo.Application
 
-
-
-
+Login view:
 ![ ](graphics/1.png "Login")
 
+List of task for today:
 ![ ](graphics/2.png "Add new task")
 
+Add new task view: 
 ![ ](graphics/3.png "New task description")
 
 
